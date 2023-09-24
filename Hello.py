@@ -50,10 +50,8 @@ def run():
 # Title
 st.title('BMI Calculator')
 
-# Input: Weight in kilograms
-weight = st.number_input('Enter your weight (kg):')
 
-# Input: Height in centimeters
+weight = st.number_input('Enter your weight (kg):')
 height = st.number_input('Enter your height (cm):')
 
 # Calculate BMI
@@ -61,7 +59,6 @@ if st.button('Calculate BMI'):
     # Convert height to meters
     height_meters = height / 100
 
-    # Calculate BMI
     bmi = weight / (height_meters ** 2)
 
     # Display BMI
@@ -77,7 +74,6 @@ if st.button('Calculate BMI'):
     else:
         st.write('You are obese.')
 
-if st.checkbox('Show BMI Curve'):
     # Generate a range of heights and corresponding BMI values
     heights = np.arange(140, 220, 1)  # Heights range
     weights = np.arange(40, 140, 1)  # Weights range
@@ -98,23 +94,5 @@ if st.checkbox('Show BMI Curve'):
 
     # Show the plot in Streamlit
     st.pyplot(fig)
- Name,Height (cm),Weight (kg),BMI
-John,175,70,22.86
-Alice,160,55,21.48
-Bob,180,90,27.78
-Emily,155,45,18.73
-Mike,190,100,27.70
-Sarah,165,68,24.98
-David,172,75,25.35
-Sophia,162,58,22.10
-Oliver,176,88,28.41
-Emma,168,70,24.80
-
-
-
-
-
-
-
 if __name__ == "__main__":
     run()
