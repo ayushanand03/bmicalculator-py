@@ -98,6 +98,18 @@ if st.checkbox('Show BMI Curve'):
 
     # Show the plot in Streamlit
     st.pyplot(fig)
+ Name,Height (cm),Weight (kg),BMI
+John,175,70,22.86
+Alice,160,55,21.48
+Bob,180,90,27.78
+Emily,155,45,18.73
+Mike,190,100,27.70
+Sarah,165,68,24.98
+David,172,75,25.35
+Sophia,162,58,22.10
+Oliver,176,88,28.41
+Emma,168,70,24.80
+
 
 
 
