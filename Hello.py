@@ -1,4 +1,5 @@
 import streamlit as st
+import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -28,8 +29,7 @@ if st.button('Calculate BMI'):
         st.write('You are overweight.')
     else:
         st.write('You are obese.')
-        import numpy as np
-
+       
 # Generate some random data for demonstration
 np.random.seed(0)
 n_samples = 100
