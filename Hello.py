@@ -1,4 +1,4 @@
-# Copyright (c) Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+ # Copyright (c) Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -45,6 +45,38 @@ def run():
         - Explore a [New York City rideshare dataset](https://github.com/streamlit/demo-uber-nyc-pickups)
     """
     )
+    import streamlit as st
+
+# Title
+st.title('BMI Calculator')
+
+# Input: Weight in kilograms
+weight = st.number_input('Enter your weight (kg):')
+
+# Input: Height in centimeters
+height = st.number_input('Enter your height (cm):')
+
+# Calculate BMI
+if st.button('Calculate BMI'):
+    # Convert height to meters
+    height_meters = height / 100
+
+    # Calculate BMI
+    bmi = weight / (height_meters ** 2)
+
+    # Display BMI
+    st.write(f'Your BMI is {bmi:.2f}')
+
+    # Interpret BMI
+    if bmi < 18.5:
+        st.write('You are underweight.')
+    elif 18.5 <= bmi < 24.9:
+        st.write('You have a normal weight.')
+    elif 25 <= bmi < 29.9:
+        st.write('You are overweight.')
+    else:
+        st.write('You are obese.')
+
 
 
 if __name__ == "__main__":
