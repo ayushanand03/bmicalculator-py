@@ -2,7 +2,8 @@ import numpy as np
 import plotly.express as px
 import streamlit as st
 import pandas as pd
-url=C:\Users\Admin\Desktop
+
+url=r'C:\Users\Admin\Desktop\sample_dataset.csv'
 df = pd.read_csv(url)
 # Title
 st.title('BMI Calculator')
