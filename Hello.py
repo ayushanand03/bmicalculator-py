@@ -2,21 +2,21 @@ import numpy as np
 import plotly.express as px
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
 import seaborn as sns
 
-url='ayushbmi.csv'
+url = 'ayushbmi.csv'
 df = pd.read_csv(url)
 
 # Title
 st.title('BMI Calculator')
+
 # Function to calculate BMI
 def calculate_bmi(weight_kg, height_m):
     return weight_kg / (height_m ** 2)
 
 # Define a range of heights and weights
-heights_m = np.arange(1.5, 2.1, 0.05)  # Heights from 1.5m to 2.0m in 5cm increments
-weights_kg = np.arange(50, 151, 5)  # Weights from 50kg to 150kg in 5kg increments
+heights_m = np.arange(1.5, 2.1, 0.05)
+weights_kg = np.arange(50, 151, 5)
 
 # Calculate BMI values for all combinations of height and weight
 bmi_values = np.empty((len(heights_m), len(weights_kg)))
@@ -24,40 +24,23 @@ for i, height in enumerate(heights_m):
     for j, weight in enumerate(weights_kg):
         bmi = calculate_bmi(weight, height)
         bmi_values[i, j] = bmi
+
 # Display basic information about the dataset
-print("Dataset Info:")
-print(df.info())
+st.subheader("Dataset Info:")
+st.write(df.info())
 
 # Display summary statistics
-print("\nSummary Statistics:")
-print(df.describe())
+st.subheader("Summary Statistics:")
+st.write(df.describe())
 
 # Check for missing values
-print("\nMissing Values:")
-print(df.isnull().sum())
+st.subheader("Missing Values:")
+st.write(df.isnull().sum())
 
 # Data Visualization
-# Example: Histogram of BMI distribution
-plt.figure(figsize=(8, 6))
-sns.histplot(df['BMI'], bins=20, kde=True)
-plt.title("BMI Distribution")
-plt.xlabel("BMI")
-plt.ylabel("Count")
-plt.show()
-
-# Example: Scatterplot of Age vs. BMI
-plt.figure(figsize=(8, 6))
-sns.scatterplot(data=df, x='Age', y='BMI')
-plt.title("Scatterplot of Age vs. BMI")
-plt.xlabel("Age (years)")
-plt.ylabel("BMI")
-plt.show()
-
 # Example: Pairplot for correlation analysis (requires Seaborn)
-sns.pairplot(df)
-plt.title("Pairplot")
-plt.show()
-
+st.subheader("Pairplot:")
+st.write(sns.pairplot(df))
 
 # Create a heatmap using Plotly
 heatmap_fig = px.imshow(
@@ -70,6 +53,7 @@ heatmap_fig = px.imshow(
 )
 
 # Display the heatmap
+st.subheader("BMI Chart:")
 st.plotly_chart(heatmap_fig)
 
 # BMI Calculator
@@ -80,7 +64,6 @@ height = st.number_input('Enter your height (cm):')
 if st.button('Calculate BMI'):
     # Convert height to meters
     height_meters = height / 100
-
     bmi = weight / (height_meters ** 2)
 
     # Display BMI
@@ -95,5 +78,3 @@ if st.button('Calculate BMI'):
         st.write('You are overweight.')
     else:
         st.write('You are obese.')
-
-
