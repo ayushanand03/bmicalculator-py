@@ -23,7 +23,13 @@ st.write('5 - Extreme Obesity')
 
 #data represent
 st.subheader('BMI sample Data')
-st.write(df) 
+st.write(df)
+
+# to show using pie chart
+st.subheader('BMI Index Distribution:')
+index_counts = df['Index'].value_counts()
+fig = px.pie(index_counts, names=index_counts.index, title='BMI Index Distribution')
+st.plotly_chart(fig)
 
 # Create a heatmap using Plotly Express
 heatmap_fig = px.scatter(
