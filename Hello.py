@@ -35,6 +35,22 @@ st.write(df.describe())
 print("\nMissing Values:")
 print(df.isnull().sum())
 
+st.title('Height vs. Weight by Status')
+
+# Create a scatter plot using Plotly Express
+scatter_fig = px.scatter(
+    df,
+    x='Height',
+    y='Weight',
+    color='Status',
+    labels=dict(x="Height (cm)", y="Weight (kg)", color="Status"),
+    title="Height vs. Weight by Status"
+)
+
+# Display the scatter plot
+st.subheader("Height vs. Weight by Status:")
+st.plotly_chart(scatter_fig)
+
 
 
 
