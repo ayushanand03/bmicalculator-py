@@ -7,26 +7,28 @@ import pandas as pd
 url = 'ayushbmi.csv'
 df = pd.read_csv(url)
 
-st.write('Gender : Male / Female,
-
-Height : Number (cm),
-
-Weight : Number (Kg)')
-
-st.write('Index :
-
-0 - Extremely Weak
-1 - Weak
-2 - Normal
-3 - Overweight
-4 - Obesity
-5 - Extreme Obesity')
-
 # Calculate BMI for all entries
 df['BMI'] = df['Weight'] / ((df['Height'] / 100) ** 2)
 
 # Title
 st.title('BMI Calculator')
+
+st.subheader('Input Format:')
+st.write('Gender : Male / Female')
+st.write('Height : Number (cm)')
+st.write('Weight : Number (Kg)')
+
+st.subheader('BMI Index Categories:')
+st.write('0 - Extremely Weak')
+st.write('1 - Weak')
+st.write('2 - Normal')
+st.write('3 - Overweight')
+st.write('4 - Obesity')
+st.write('5 - Extreme Obesity')
+
+# Display the DataFrame table with Index
+st.subheader('BMI Data with Index')
+st.write(df) 
 
 # Create a heatmap using Plotly Express
 heatmap_fig = px.scatter(
