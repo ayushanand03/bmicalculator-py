@@ -24,7 +24,21 @@ for i, height in enumerate(heights_m):
     for j, weight in enumerate(weights_kg):
         bmi = calculate_bmi(weight, height)
         bmi_values[i, j] = bmi
+        
+# Display basic information about the dataset
+st.subheader("Dataset Info:")
+st.write(df.info())
 
+# Display summary statistics
+st.subheader("Summary Statistics:")
+st.write(df.describe())
+
+print("\nMissing Values:")
+print(df.isnull().sum())
+
+# Calculate the average BMI
+average_bmi = df['bmi'].mean()
+print("\nAverage BMI:", average_bmi)
 
 
 # Create a heatmap using Plotly
@@ -40,14 +54,6 @@ heatmap_fig = px.imshow(
 # Display the heatmap
 st.subheader("BMI Chart:")
 st.plotly_chart(heatmap_fig)
-
-# Display basic information about the dataset
-print("Dataset Info:")
-print(df.info())
-
-# Display summary statistics
-print("\nSummary Statistics:")
-print(df.describe())
 
 # BMI Calculator
 weight = st.number_input('Enter your weight (kg):')
