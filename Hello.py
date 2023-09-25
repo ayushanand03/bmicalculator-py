@@ -13,10 +13,7 @@ df['BMI'] = df['Weight'] / ((df['Height'] / 100) ** 2)
 # Title
 st.title('BMI Calculator')
 
-st.subheader('Input Format:')
-st.write('Gender : Male / Female')
-st.write('Height : Number (cm)')
-st.write('Weight : Number (Kg)')
+)
 
 st.subheader('BMI Index Categories:')
 st.write('0 - Extremely Weak')
