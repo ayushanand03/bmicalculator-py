@@ -25,22 +25,7 @@ for i, height in enumerate(heights_m):
         bmi = calculate_bmi(weight, height)
         bmi_values[i, j] = bmi
 
-# Display basic information about the dataset
-st.subheader("Dataset Info:")
-st.write(df.info())
 
-# Display summary statistics
-st.subheader("Summary Statistics:")
-st.write(df.describe())
-
-# Check for missing values
-st.subheader("Missing Values:")
-st.write(df.isnull().sum())
-
-# Data Visualization
-# Example: Pairplot for correlation analysis (requires Seaborn)
-st.subheader("Pairplot:")
-st.write(sns.pairplot(df))
 
 # Create a heatmap using Plotly
 heatmap_fig = px.imshow(
