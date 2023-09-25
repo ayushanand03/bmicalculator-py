@@ -7,19 +7,18 @@ import pandas as pd
 url = 'ayushbmi.csv'
 df = pd.read_csv(url)
 
-# Title
-st.title('BMI Calculator')
-
+# Calculate BMI for all entries
 df['BMI'] = df['Weight'] / ((df['Height'] / 100) ** 2)
 
 # Title
 st.title('BMI Calculator')
 
 # Create a heatmap using Plotly Express
-heatmap_fig = px.imshow(
-    df.pivot_table(index='Height', columns='Weight', values='BMI'),
-    x=df['Weight'].unique(),
-    y=df['Height'].unique(),
+heatmap_fig = px.scatter(
+    df,
+    x='Weight',
+    y='Height',
+    color='BMI',
     labels=dict(x="Weight (kg)", y="Height (cm)", color="BMI"),
     color_continuous_scale="YlGnBu",
     title="BMI Chart"
@@ -28,7 +27,6 @@ heatmap_fig = px.imshow(
 # Display the heatmap
 st.subheader("BMI Chart:")
 st.plotly_chart(heatmap_fig)
-
 
 # Display summary statistics
 st.subheader("Summary Statistics:")
