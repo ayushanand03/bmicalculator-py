@@ -37,26 +37,45 @@ print(df.isnull().sum())
 
 
 
+# Sidebar for BMI calculation
+st.sidebar.header('BMI Calculator')
 
-# BMI Calculator
-weight = st.number_input('Enter your weight (kg):')
-height = st.number_input('Enter your height (cm):')
+# Sidebar input for weight and height
+weight = st.sidebar.number_input('Enter your weight (kg):', min_value=0.0, step=0.1)
+height_cm = st.sidebar.number_input('Enter your height (cm):', min_value=0.0, step=0.1)
 
 # Calculate BMI
-if st.button('Calculate BMI'):
-    # Convert height to meters
-    height_meters = height / 100
-    bmi = weight / (height_meters ** 2)
+if st.sidebar.button('Calculate BMI'):
+    # Convert height from cm to meters
+    height_m = height_cm / 100
+
+    # Calculate BMI
+    bmi = weight / (height_m ** 2)
 
     # Display BMI
-    st.write(f'Your BMI is {bmi:.2f}')
+    st.sidebar.subheader('Your BMI is:')
+    st.sidebar.write(f'{bmi:.2f}')
 
     # Interpret BMI
     if bmi < 18.5:
-        st.write('You are underweight.')
+        st.sidebar.write('You are underweight.')
     elif 18.5 <= bmi < 24.9:
-        st.write('You have a normal weight.')
+        st.sidebar.write('You have a normal weight.')
     elif 25 <= bmi < 29.9:
-        st.write('You are overweight.')
+        st.sidebar.write('You are overweight.')
     else:
-        st.write('You are obese.')
+        st.sidebar.write('You are obese')
+
+# Create a scatter plot using Plotly Express
+scatter_fig = px.scatter(
+    df,
+    x='Height',
+    y='Weight',
+    color='Status',
+    labels=dict(x="Height (cm)", y="Weight (kg)", color="Status"),
+    title="Height vs. Weight by Status"
+)
+
+# Display the scatter plot in the main content area
+st.subheader("Height vs. Weight by Status:")
+st.plotly_chart(scatter_fig)
