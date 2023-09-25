@@ -1,6 +1,8 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
 
 # Title
 st.title('BMI Calculator')
@@ -28,8 +30,7 @@ if st.button('Calculate BMI'):
         st.write('You are overweight.')
     else:
         st.write('You are obese.')
-import matplotlib.pyplot as plt
-import numpy as np
+
 
 # Function to calculate BMI
 def calculate_bmi(weight_kg, height_m):
