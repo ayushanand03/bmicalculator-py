@@ -10,24 +10,25 @@ df = pd.read_csv(url)
 # Title
 st.title('BMI Calculator')
 
-# Function to calculate BMI
-def calculate_bmi(weight_kg, height_m):
-    return weight_kg / (height_m ** 2)
+df['BMI'] = df['Weight'] / ((df['Height'] / 100) ** 2)
 
-# Define a range of heights and weights
-heights_m = np.arange(1.5, 2.1, 0.05)
-weights_kg = np.arange(50, 151, 5)
+# Title
+st.title('BMI Calculator')
 
-# Calculate BMI values for all combinations of height and weight
-bmi_values = np.empty((len(heights_m), len(weights_kg)))
-for i, height in enumerate(heights_m):
-    for j, weight in enumerate(weights_kg):
-        bmi = calculate_bmi(weight, height)
-        bmi_values[i, j] = bmi
-        
-# Display basic information about the dataset
-st.subheader("Dataset Info:")
-st.write(df.info())
+# Create a heatmap using Plotly Express
+heatmap_fig = px.imshow(
+    df.pivot_table(index='Height', columns='Weight', values='BMI'),
+    x=df['Weight'].unique(),
+    y=df['Height'].unique(),
+    labels=dict(x="Weight (kg)", y="Height (cm)", color="BMI"),
+    color_continuous_scale="YlGnBu",
+    title="BMI Chart"
+)
+
+# Display the heatmap
+st.subheader("BMI Chart:")
+st.plotly_chart(heatmap_fig)
+
 
 # Display summary statistics
 st.subheader("Summary Statistics:")
@@ -38,19 +39,6 @@ print(df.isnull().sum())
 
 
 
-# Create a heatmap using Plotly
-heatmap_fig = px.imshow(
-    bmi_values,
-    x=weights_kg,
-    y=heights_m,
-    labels=dict(x="Weight (kg)", y="Height (m)", color="BMI"),
-    color_continuous_scale="YlGnBu",
-    title="BMI Chart"
-)
-
-# Display the heatmap
-st.subheader("BMI Chart:")
-st.plotly_chart(heatmap_fig)
 
 # BMI Calculator
 weight = st.number_input('Enter your weight (kg):')
