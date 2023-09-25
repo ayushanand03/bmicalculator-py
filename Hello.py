@@ -1,10 +1,11 @@
 import numpy as np
 import plotly.express as px
 import streamlit as st
-
+import pandas as pd
+url=C:\Users\Admin\Desktop
+df = pd.read_csv(url)
 # Title
 st.title('BMI Calculator')
-
 # Function to calculate BMI
 def calculate_bmi(weight_kg, height_m):
     return weight_kg / (height_m ** 2)
