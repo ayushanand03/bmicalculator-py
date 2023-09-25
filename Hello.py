@@ -2,6 +2,8 @@ import numpy as np
 import plotly.express as px
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 url='ayushbmi.csv'
 df = pd.read_csv(url)
@@ -22,6 +24,40 @@ for i, height in enumerate(heights_m):
     for j, weight in enumerate(weights_kg):
         bmi = calculate_bmi(weight, height)
         bmi_values[i, j] = bmi
+# Display basic information about the dataset
+print("Dataset Info:")
+print(df.info())
+
+# Display summary statistics
+print("\nSummary Statistics:")
+print(df.describe())
+
+# Check for missing values
+print("\nMissing Values:")
+print(df.isnull().sum())
+
+# Data Visualization
+# Example: Histogram of BMI distribution
+plt.figure(figsize=(8, 6))
+sns.histplot(df['BMI'], bins=20, kde=True)
+plt.title("BMI Distribution")
+plt.xlabel("BMI")
+plt.ylabel("Count")
+plt.show()
+
+# Example: Scatterplot of Age vs. BMI
+plt.figure(figsize=(8, 6))
+sns.scatterplot(data=df, x='Age', y='BMI')
+plt.title("Scatterplot of Age vs. BMI")
+plt.xlabel("Age (years)")
+plt.ylabel("BMI")
+plt.show()
+
+# Example: Pairplot for correlation analysis (requires Seaborn)
+sns.pairplot(df)
+plt.title("Pairplot")
+plt.show()
+
 
 # Create a heatmap using Plotly
 heatmap_fig = px.imshow(
@@ -59,3 +95,5 @@ if st.button('Calculate BMI'):
         st.write('You are overweight.')
     else:
         st.write('You are obese.')
+
+
