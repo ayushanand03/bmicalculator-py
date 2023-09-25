@@ -3,8 +3,9 @@ import plotly.express as px
 import streamlit as st
 import pandas as pd
 
-url= r'C:\Users\Admin\Desktop\ayush 2 bmi.csv'
+url= r'C:\Users\Admin\Desktop\ayushbmi.csv'
 df = pd.read_csv(url)
+
 # Title
 st.title('BMI Calculator')
 # Function to calculate BMI
