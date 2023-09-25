@@ -1,4 +1,9 @@
-
+import matplotlib.pyplot as plt
+import numpy as np
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import streamlit as st
 
 # Title
 st.title('BMI Calculator')
