@@ -2,7 +2,7 @@ import numpy as np
 import plotly.express as px
 import streamlit as st
 import pandas as pd
-import seaborn as sns
+
 
 url = 'ayushbmi.csv'
 df = pd.read_csv(url)
@@ -36,9 +36,6 @@ st.write(df.describe())
 print("\nMissing Values:")
 print(df.isnull().sum())
 
-# Calculate the average BMI
-average_bmi = df['bmi'].mean()
-print("\nAverage BMI:", average_bmi)
 
 
 # Create a heatmap using Plotly
