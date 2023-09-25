@@ -3,7 +3,7 @@ import plotly.express as px
 import streamlit as st
 import pandas as pd
 
-url=
+url='ayushbmi.csv'
 df = pd.read_csv(url)
 
 # Title
