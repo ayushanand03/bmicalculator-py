@@ -66,16 +66,4 @@ if st.sidebar.button('Calculate BMI'):
     else:
         st.sidebar.write('You are obese')
 
-# Create a scatter plot using Plotly Express
-scatter_fig = px.scatter(
-    df,
-    x='Height',
-    y='Weight',
-    color='Status',
-    labels=dict(x="Height (cm)", y="Weight (kg)", color="Status"),
-    title="Height vs. Weight by Status"
-)
 
-# Display the scatter plot in the main content area
-st.subheader("Height vs. Weight by Status:")
-st.plotly_chart(scatter_fig)
