@@ -21,7 +21,7 @@ st.write('3 - Overweight')
 st.write('4 - Obesity')
 st.write('5 - Extreme Obesity')
 
-# Display the DataFrame table with Index
+#data represent
 st.subheader('BMI sample Data')
 st.write(df) 
 
