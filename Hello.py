@@ -7,6 +7,21 @@ import pandas as pd
 url = 'ayushbmi.csv'
 df = pd.read_csv(url)
 
+st.write('Gender : Male / Female,
+
+Height : Number (cm),
+
+Weight : Number (Kg)')
+
+st.write('Index :
+
+0 - Extremely Weak
+1 - Weak
+2 - Normal
+3 - Overweight
+4 - Obesity
+5 - Extreme Obesity')
+
 # Calculate BMI for all entries
 df['BMI'] = df['Weight'] / ((df['Height'] / 100) ** 2)
 
