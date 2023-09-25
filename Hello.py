@@ -22,7 +22,7 @@ st.write('4 - Obesity')
 st.write('5 - Extreme Obesity')
 
 # Display the DataFrame table with Index
-st.subheader('BMI Data with Index')
+st.subheader('BMI sample Data')
 st.write(df) 
 
 # Create a heatmap using Plotly Express
