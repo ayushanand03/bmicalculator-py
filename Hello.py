@@ -32,14 +32,7 @@ st.plotly_chart(heatmap_fig)
 st.subheader("Summary Statistics:")
 st.write(df.describe())
 
-print("\nMissing Values:")
-print(df.isnull().sum())
 
-# Pie chart of summary statistics
-st.subheader('Summary Statistics (BMI Status)')
-status_counts = df['Status'].value_counts()
-fig = px.pie(status_counts, names=status_counts.index, title='BMI Status Distribution')
-st.plotly_chart(fig)
 
 # Sidebar for BMI calculation
 st.sidebar.header('BMI Calculator')
