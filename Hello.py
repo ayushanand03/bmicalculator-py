@@ -41,6 +41,14 @@ heatmap_fig = px.imshow(
 st.subheader("BMI Chart:")
 st.plotly_chart(heatmap_fig)
 
+# Display basic information about the dataset
+print("Dataset Info:")
+print(df.info())
+
+# Display summary statistics
+print("\nSummary Statistics:")
+print(df.describe())
+
 # BMI Calculator
 weight = st.number_input('Enter your weight (kg):')
 height = st.number_input('Enter your height (cm):')
