@@ -10,7 +10,6 @@ df = pd.read_csv(url)
 # Calculate BMI for all entries
 df['BMI'] = df['Weight'] / ((df['Height'] / 100) ** 2)
 
-# Title
 st.title('BMI Calculator')
 
 st.subheader('BMI Index Categories:')
@@ -31,7 +30,7 @@ index_counts = df['Index'].value_counts()
 fig = px.pie(index_counts, names=index_counts.index, title='BMI Index Distribution')
 st.plotly_chart(fig)
 
-# Create a heatmap using Plotly Express
+
 heatmap_fig = px.scatter(
     df,
     x='Weight',
@@ -42,7 +41,7 @@ heatmap_fig = px.scatter(
     title="BMI Chart"
 )
 
-# Display the heatmap
+# Displaying heatmap
 st.subheader("BMI Chart:")
 st.plotly_chart(heatmap_fig)
 
